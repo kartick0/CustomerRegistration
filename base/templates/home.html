@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customer Registration</title>
+    </head>
+
+    <style>
+    .errorlist {
+        color: red;
+        list-style: none;
+    }
+
+    #submit {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        padding: 5px 12px;
+      }
+</style>
+    <body>
+
+
+        <center>
+
+            <h2>Customer Registration Form</h2>
+            <form method="POST" novalidate>
+
+
+                {% csrf_token %}
+
+                <table style="width:400px;">
+                    <tbody>
+
+                        {% for field in form %}
+                        <tr>
+                            <th>
+                                {{field.label_tag}}
+                            </th>
+                            <td>
+                                {% if field.errors %}
+
+                                {{field.errors}}
+
+
+                                {% endif %}
+                                {{field}}
+
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+
+
+
+                {{form.non_field_errors}}
+
+
+                <input type="submit" id="submit" value="Submit">
+            </form>
+
+
+        </center>
+
+
+
+
+
+
+    </body>
+
+</html>
